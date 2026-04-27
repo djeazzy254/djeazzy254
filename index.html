@@ -111,6 +111,15 @@
   .footer-logo{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:3px;color:var(--gold)}
   .footer-copy{font-size:.75rem;color:var(--muted);letter-spacing:1px}
   
+
+  /* WHATSAPP FLOAT */
+  .wa-float{position:fixed;bottom:2rem;right:2rem;z-index:200;display:flex;align-items:center;gap:.75rem;cursor:pointer;text-decoration:none}
+  .wa-btn{width:58px;height:58px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.8rem;box-shadow:0 4px 20px rgba(37,211,102,.4);transition:transform .3s,box-shadow .3s;animation:waPulse 2.5s infinite}
+  .wa-btn:hover{transform:scale(1.1);box-shadow:0 6px 28px rgba(37,211,102,.6)}
+  .wa-label{background:rgba(8,8,8,.85);color:#fff;font-size:.75rem;letter-spacing:1px;padding:.45rem .9rem;border-radius:2px;white-space:nowrap;opacity:0;transform:translateX(10px);transition:all .3s;backdrop-filter:blur(4px);border:1px solid rgba(37,211,102,.3)}
+  .wa-float:hover .wa-label{opacity:1;transform:translateX(0)}
+  @keyframes waPulse{0%,100%{box-shadow:0 4px 20px rgba(37,211,102,.4)}50%{box-shadow:0 4px 30px rgba(37,211,102,.7)}}
+
   /* MIXTAPES */
   #mixtapes{background:var(--dark)}
   .mixtapes-inner{max-width:1200px;margin:0 auto}
@@ -376,7 +385,7 @@
       <div class="divider"></div>
       <p>Ready to elevate your next event? Whether it&apos;s a corporate gig, private party, or festival &mdash; reach out and let&apos;s make it unforgettable.</p>
       <div class="contact-detail"><span class="icon">&#128222;</span><a href="tel:+254728957844">0728 957 844</a></div>
-      <div class="contact-detail"><span class="icon">&#9993;</span><a href="/cdn-cgi/l/"email:djeazzy254@gmail.com"><span class="__cf_email__" data-cfemail="djeazzy254@gmail.com">[email]</span></a></div>
+      <div class="contact-detail"><span class="icon">&#9993;</span><a href="mailto:djeazzy254@gmail.com">djeazzy254@gmail.com</a></div>
       <div class="contact-detail"><span class="icon">&#128205;</span><span>Nairobi, Kenya</span></div>
       <div class="socials">
         <a href="https://facebook.com/DJEAZZY254" target="_blank" class="social-btn">Facebook</a>
@@ -385,15 +394,18 @@
         <a href="https://twitter.com/DJ_EAZZY254" target="_blank" class="social-btn">X</a>
         <a href="https://www.youtube.com/@djeazzy254" target="_blank" class="social-btn">YouTube</a>
         <a href="https://hearthis.at/dj-eazzy-254/" target="_blank" class="social-btn">HearThis</a>
+        <a href="https://wa.me/254728957844?text=Hi%20DJ%20Eazzy%20254%2C%20I%27d%20like%20to%20book%20you%20for%20my%20event!" target="_blank" class="social-btn" style="background:rgba(37,211,102,.1);border-color:rgba(37,211,102,.4);color:#25D366">&#128377; WhatsApp</a>
       </div>
     </div>
-    <form class="contact-form" onsubmit="handleSubmit(event)">
-      <input type="text" placeholder="Your Name" required/>
-      <input type="email" placeholder="Email Address" required/>
-      <input type="tel" placeholder="Phone Number"/>
-      <select><option value="" disabled selected>Event Type</option><option>Corporate Event</option><option>Private Party</option><option>Wedding</option><option>Festival / Show</option><option>Other</option></select>
-      <input type="date"/>
-      <textarea placeholder="Tell me about your event..."></textarea>
+    <form class="contact-form" action="https://formspree.io/f/xnjlyonr" method="POST" onsubmit="handleSubmit(event)">
+      <input type="hidden" name="_subject" value="New Booking Request - DJ Eazzy 254 Website"/>
+      <input type="hidden" name="_replyto" value=""/>
+      <input type="text" name="name" placeholder="Your Name" required/>
+      <input type="email" name="email" placeholder="Email Address" required/>
+      <input type="tel" name="phone" placeholder="Phone Number"/>
+      <select name="event_type"><option value="" disabled selected>Event Type</option><option>Corporate Event</option><option>Private Party</option><option>Wedding</option><option>Festival / Show</option><option>Other</option></select>
+      <input type="date" name="event_date"/>
+      <textarea name="message" placeholder="Tell me about your event..."></textarea>
       <button type="submit">Send Booking Request</button>
     </form>
   </div>
